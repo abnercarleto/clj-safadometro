@@ -3,27 +3,29 @@
 
 ;; Calcular somatorio
 ;; recebe um nomero inteiro soma com todos os anteriores
-;; ex somatio de 5 -> 5 + 4 + 3 + 2 + 1 = 15
-(defn somatorio [mes]
+;; ex (somatorio 5) -> 5 + 4 + 3 + 2 + 1 = 15
+(defn somatorio
+  [^long mes]
   (loop [n mes acc 0]
     (if (zero? n)
         acc
       (recur (dec n) (+ n acc)))))
 
-(defn calc-safadeza [ano mes dia]
+(defn calc-safadeza
+
+  [^long ano ^long mes ^long dia]
   (->> (- 50 dia)
     (* (/ ano 100))
     (+ (somatorio mes))
-    (float)))
+    (double)))
 
-(defn calc-anjo [safadeza]
-  (->> safadeza
-    (- 100)
-    (float)))
+(defn calc-anjo
+  [^double safadeza]
+  (double (- 100 safadeza)))
 
 
 (defn -main
-  "I don't do a whole lot ... yet."
+  "Calcula o percentual anjo e vagabundo de uma pessoa pela data de nascimento"
   [& args]
   (let [[str-dia str-mes str-ano] args
         dia (Integer/parseInt str-dia)
