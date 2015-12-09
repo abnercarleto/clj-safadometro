@@ -7,12 +7,11 @@
 (defn somatorio
   [^long mes]
   (loop [n mes acc 0]
-    (if (zero? n)
+    (if (>= 0 n)
         acc
       (recur (dec n) (+ n acc)))))
 
 (defn calc-safadeza
-
   [^long ano ^long mes ^long dia]
   (->> (- 50 dia)
     (* (/ ano 100))
