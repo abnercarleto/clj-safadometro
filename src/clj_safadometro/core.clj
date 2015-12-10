@@ -4,19 +4,19 @@
 ;; Calcular somatorio
 ;; recebe um nomero inteiro soma com todos os anteriores
 ;; ex (somatorio 5) -> 5 + 4 + 3 + 2 + 1 = 15
-(defn somatorio
-  ([mes]
-    (somatorio mes 0))
-  ([mes acc]
-    (if (<= mes 0)
-        acc
-      (recur (dec mes) (+ mes acc)))))
+;; Somatório é igual a teoria de números triangulares
+;;      n * (n + 1)
+;; T =      -------
+;;             2
+(defn numero-triangular
+  [numero]
+  (/ (* numero (inc numero)) 2))
 
 (defn calc-safadeza
   [^long ano ^long mes ^long dia]
   (->> (- 50 dia)
     (* (/ ano 100))
-    (+ (somatorio mes))
+    (+ (numero-triangular mes))
     (double)))
 
 (defn calc-anjo
