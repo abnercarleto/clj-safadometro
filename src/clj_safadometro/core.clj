@@ -5,11 +5,12 @@
 ;; recebe um nomero inteiro soma com todos os anteriores
 ;; ex (somatorio 5) -> 5 + 4 + 3 + 2 + 1 = 15
 (defn somatorio
-  [^long mes]
-  (loop [n mes acc 0]
-    (if (>= 0 n)
+  ([mes]
+    (somatorio mes 0))
+  ([mes acc]
+    (if (<= mes 0)
         acc
-      (recur (dec n) (+ n acc)))))
+      (recur (dec mes) (+ mes acc)))))
 
 (defn calc-safadeza
   [^long ano ^long mes ^long dia]
